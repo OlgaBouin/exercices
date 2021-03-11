@@ -14,3 +14,6 @@ const litteralDigits = [
   "eight",
   "nine",
 ];
+
+let i=litteralDigits.length-1;
+while(i>-1){console.log(litteralDigits[i]);i--;}
