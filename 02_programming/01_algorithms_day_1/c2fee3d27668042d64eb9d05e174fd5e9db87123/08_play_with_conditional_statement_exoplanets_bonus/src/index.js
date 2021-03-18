@@ -6,15 +6,13 @@ const planet = require("./data/exoplanetData");
 let canHabitateLife = true;
 
 canHabitateLife=canHabitateLife 
-  && planet.habitalZone
+  && (planet.habitalZone
   && planet.rotationStability
-  && ((planet.mass >= 0.5) 
-  || ((planet.mass > 0.32 && planet.mass < 0.5) && (planet.radius > 1))
-  || (planet.mass === 1 && planet.radius === 1))
-  && (star.temperature > 3500)
-  && (star.temperature < 7000)
-  && ((star.spectralClass === 'K') 
-  || (star.spectralClass === 'M'));
+  && ((planet.mass >= 0.5) || ((planet.mass > 0.32 && planet.mass < 0.5) && (planet.radius > 1)))
+  || (planet.mass === 1 && planet.radius === 1 && planet.habitalZone && planet.rotationStability))
+  //&& (star.temperature > 3500)
+  //&& (star.temperature < 7000)
+  && ((star.spectralClass === 'K') || (star.spectralClass === 'M'));
 
 
 console.log(canHabitateLife);

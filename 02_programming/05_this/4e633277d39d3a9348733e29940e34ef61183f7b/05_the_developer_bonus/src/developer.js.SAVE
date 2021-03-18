@@ -1,0 +1,90 @@
+// Developer
+// ✕ The developer should not be coding before starting a project (1 ms)
+// ✕ The developer should'nt have any coding stats before starting a project (1 ms)
+// ✕ The developer should wait for a project before starting one
+// #initiateProject
+//   ✕ initiateProject should be a function (1 ms)
+//   ✕ It should make the dev start coding
+//   ✕ It should reset the previous days and lines of code
+// #startProject
+//   ✕ startProject should be a function (4 ms)
+//   ✕ It should take linesNeeded and maxDelay as parameters and change their values (1 ms)
+//   ✕ It should return the developer
+// #codeForOneDay
+//   ✕ The developer should write 2 lines of code per day when he generates no bug (1 ms)
+//   ✕ The developer should spend 3 days without coding when he generates a bug
+// #mightStop
+//   ✕ The developer should stop coding & the project status should be 'project stopped' if he goes beyond the delay
+//   ✕ The developer should stop coding & the project status should be 'project finished' if he has done the code needed during the delay (1 ms)
+
+
+
+
+const developer = {
+  isCoding: false,
+  daysCoding: 0,
+  projectStatus: "waiting for a project",
+  codeLinesProduced: 0,
+  linesNeeded: 0,
+  maxDelay: 0,
+  initiateProject: function () {
+    this.daysCoding=0;
+    this.codeLinesProduced=0;
+    this.isCoding = true;
+    this.projectStatus = "project in progress";
+    return this;
+  },
+  startProject: function (lines, delay) { 
+    this.initiateProject();
+    this.linesNeeded = lines;
+    this.maxDelay = delay;
+    return {
+      ...this,
+      linesNeeded: lines,
+      maxDelay: delay,
+    };
+  },
+};
+
+console.log(developer);
+
+function codeForOneDay(dev) {
+  dev=migthStop(dev);
+  if (bugCreator(dev.codeLinesProduced)) {
+    dev.daysCoding -= 3;
+  } else {
+    dev.daysCoding += 1;
+    dev.codeLinesProduced = +2;
+  }
+
+}
+
+function bugCreator(nbOfCodedLines) {
+  if (nbOfCodedLines < 80) return 0.1 > Math.random();
+  else if (nbOfCodedLines < 150) return 0.2 > Math.random();
+  else if (nbOfCodedLines > 150) return 0.4 > Math.random();
+  else return false;
+}
+
+function migthStop(devObj) {
+  if (devObj.daysCoding >= devObj.maxDelay) {
+    devObj.isCoding = false;
+    devObj.projectStatus = "project stopped";
+  }
+  else if (devObj.linesNeeded >= devObj.codeLinesProduced){
+    devObj.projectStatus="project finished";
+    devObj.isCoding=false;
+    console.log(`Project took ${devObj.lines} days.`);
+  }
+  return devObj;
+}
+
+
+
+console.log(developer.startProject(130,100).maxDelay);
+//console.log(migthStop(developer));
+//console.log(codeForOneDay(codeForOneDay(developer.startProject(130,100))));
+
+
+
+module.exports = developer;
