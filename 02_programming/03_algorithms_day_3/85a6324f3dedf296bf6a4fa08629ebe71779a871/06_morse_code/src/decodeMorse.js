@@ -43,19 +43,14 @@ const transformStringToArray = (string, separator) => string.trim().split(separa
 
 const decodeMorseLetter = (morseString) => MORSE_CODE[morseString];
 
-const decodeMorseWord = (morseWordArray) => morseWordArray.reduce(fnForReduce);
-
-const fnForReduce = (word, letter) => word + decodeMorseLetter(letter);
-
-
-
+const decodeMorseWord = (morseWordArray) => morseWordArray.reduce((word, letter) => word + decodeMorseLetter(letter), "");
 const decodeMorse = (stringToDecode) => {
   const morseDoubleArray = transformStringToArray(stringToDecode, "  ").map((element) =>
     transformStringToArray(element, " "),
   );
-  
-  for (let i = 0; i < morseDoubleArray.length; i++) morseDoubleArray[i][0] = decodeMorseLetter(morseDoubleArray[i][0]); //a eviter
-
+  //console.log(morseDoubleArray);  
+  //for (let i = 0; i < morseDoubleArray.length; i++) morseDoubleArray[i][0] = decodeMorseLetter(morseDoubleArray[i][0]); //a eviter
+  //console.log(morseDoubleArray); 
   return morseDoubleArray.map(decodeMorseWord).join(" ");
 };
 
@@ -66,6 +61,6 @@ const decodeMorse = (stringToDecode) => {
 // Leave line below for tests to work properly
 module.exports = decodeMorse;
 
-//const result = decodeMorse(".... . -.--   .--- ..- -.. .");
+const result = decodeMorse(".... . -.--   .--- ..- -.. .");
 
-//console.log(result);
+console.log(result);
