@@ -8,7 +8,9 @@ let canHabitateLife = true;
 canHabitateLife=canHabitateLife 
   && (planet.habitalZone
   && planet.rotationStability
-  && ((planet.mass >= 0.5) || ((planet.mass > 0.32 && planet.mass < 0.5) && (planet.radius > 1)))
+  && planet.radius >= 0.5
+  && planet.radius <= 2.5 
+  && ((planet.mass >= 0.5)  || ((planet.mass > 0.32 && planet.mass < 0.5) && (planet.radius > 1)))
   || (planet.mass === 1 && planet.radius === 1 && planet.habitalZone && planet.rotationStability))
   //&& (star.temperature > 3500)
   //&& (star.temperature < 7000)
