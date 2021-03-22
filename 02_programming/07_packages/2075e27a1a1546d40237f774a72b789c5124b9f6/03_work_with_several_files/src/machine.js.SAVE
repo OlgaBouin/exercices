@@ -1,0 +1,10 @@
+import * as container from "./container.js";
+import * as drinks from "./drinks.js";
+
+// Here you can import functions from 'container' and 'drink'
+const coffeeMachine = {
+  litersOfCoffee: 0,
+  expresso: function () {return drinks.expresso(this);},
+  fillWithLitersOfCoffee: function (liters) {return container.putLitersOfCoffee(this,liters);},
+  longCoffee: function () {return drinks.longCoffee(this);},
+};

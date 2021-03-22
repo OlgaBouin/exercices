@@ -1,0 +1,9 @@
+// There should be no import in this file. Only exports!
+
+function putLitersOfCoffee (quantity,liters)
+{return (quantity + liters);}
+
+function consumeLitersOfCoffee (quantity,liters)
+{return  (quantity - liters);}
+
+export {putLitersOfCoffee, consumeLitersOfCoffee};
