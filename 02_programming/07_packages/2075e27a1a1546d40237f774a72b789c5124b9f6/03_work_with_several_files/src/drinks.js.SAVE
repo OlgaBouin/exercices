@@ -1,0 +1,16 @@
+// There should be no import in this file. Only exports!
+
+function serveACup (machine,quantityInCentiliters)  {
+  if (machine.litersOfCoffee - quantityInCentiliters >= 0) {
+    machine.litersOfCoffee -= quantityInCentiliters;
+    return true;
+  } else {
+    return false;
+  }
+};
+
+function longCoffee (objMachine) {serveACup(objMachine,0.15);};
+
+function expresso (objMachine) {serveACup(objMachine,0.08);};
+
+export {longCoffee, expresso};
