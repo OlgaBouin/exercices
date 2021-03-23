@@ -41,7 +41,10 @@ function logInfos(user = {}) {
     },
   };
   // const userToDisplay = {...redactedUser,...user};
-  const userToDisplay = {...redactedUser, ...user};
+  //const userToDisplay = {...redactedUser, ...user};
+
+  const userToDisplay = Object.assign({},redactedUser,user);
+  userToDisplay.address = Object.assign({},redactedUser.address,user.address);
   // (userToDisplay.address.city === undefined) ? userToDisplay.address.city = "<REDACTED>" : console.log("...");
   // (userToDisplay.address.country === undefined) ? userToDisplay.address.country = "<REDACTED>" : console.log("...");
   
