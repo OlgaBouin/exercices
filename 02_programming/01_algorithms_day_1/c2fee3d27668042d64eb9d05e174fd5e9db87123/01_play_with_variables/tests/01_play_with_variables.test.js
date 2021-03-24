@@ -6,9 +6,7 @@ const readcode = require("./readcode");
 let studentCode;
 beforeAll(() => {
   // Loads the student's code
-  studentCode = readcode(
-    path.resolve(__dirname, "../src/01_play_with_variables.js")
-  );
+  studentCode = readcode(path.resolve(__dirname, "../src/01_play_with_variables.js"));
   return studentCode;
 });
 
@@ -56,8 +54,8 @@ describe("sumResult", () => {
   test("Should be linked to foo and bar. Changing foo should update it", () => {
     return studentCode.then((code) => {
       const changedStudentCode = code.replace(
-        new RegExp(/(let|const)(\s*?)foo(\s*?)=(\s*?)([0-9]{2})(\s*?);/),
-        "const foo = 10;"
+        new RegExp(/(let|const)(\s*?)foo(\s*?)=(\s*?)([]{2})(\s*?);/),
+        "const foo = 10;",
       );
       const sumResult = eval(changedStudentCode + "; sumResult;");
       expect(sumResult).toBe(38);
@@ -67,8 +65,8 @@ describe("sumResult", () => {
   test("Should be linked to foor and bar. Changing bar should update it", () => {
     return studentCode.then((code) => {
       const changedStudentCode = code.replace(
-        new RegExp(/(let|const)(\s*?)bar(\s*?)=(\s*?)([0-9]{2})(\s*?);/),
-        "const bar = 10;"
+        new RegExp(/(let|const)(\s*?)bar(\s*?)=(\s*?)([]{2})(\s*?);/),
+        "const bar = 10;",
       );
       const sumResult = eval(changedStudentCode + "; sumResult;");
       expect(sumResult).toBe(22);
@@ -88,8 +86,8 @@ describe("prodResult", () => {
   test("Should be linked to foor and bar. Changing foo should update it", () => {
     return studentCode.then((code) => {
       const changedStudentCode = code.replace(
-        new RegExp(/(let|const)(\s*?)foo(\s*?)=(\s*?)([0-9]{2})(\s*?);/),
-        "const foo = 10;"
+        new RegExp(/(let|const)(\s*?)foo(\s*?)=(\s*?)([]{2})(\s*?);/),
+        "const foo = 10;",
       );
       const prodResult = eval(changedStudentCode + "; prodResult;");
       expect(prodResult).toBe(280);
@@ -99,8 +97,8 @@ describe("prodResult", () => {
   test("Should be linked to foor and bar. Changing bar should update it", () => {
     return studentCode.then((code) => {
       const changedStudentCode = code.replace(
-        new RegExp(/(let|const)(\s*?)bar(\s*?)=(\s*?)([0-9]{2})(\s*?);/),
-        "const bar = 10;"
+        new RegExp(/(let|const)(\s*?)bar(\s*?)=(\s*?)([]{2})(\s*?);/),
+        "const bar = 10;",
       );
       const prodResult = eval(changedStudentCode + "; prodResult;");
       expect(prodResult).toBe(120);
@@ -112,10 +110,8 @@ describe("leader", () => {
   test("Should be linked to answer. Changing answer should update it", () => {
     return studentCode.then((code) => {
       const changedStudentCode = code.replace(
-        new RegExp(
-          /(let|const)(\s*?)answer(\s*?)=(\s*?)"Dev dev dev!"(\s*?);/
-        ),
-        "const answer = 'yes?';"
+        new RegExp(/(let|const)(\s*?)answer(\s*?)=(\s*?)"Dev dev dev!"(\s*?);/),
+        "const answer = 'yes?';",
       );
       const sparta = eval(changedStudentCode + "; sparta;");
       const expected = {
@@ -147,10 +143,7 @@ describe("leader", () => {
 
   test("leader should be linked to sparta. Changing the phrase inside promo should update it", () => {
     return studentCode.then((code) => {
-      const changedStudentCode = code.replace(
-        new RegExp("(let|const) leader"),
-        "sparta.check = 'yes?'; $&"
-      );
+      const changedStudentCode = code.replace(new RegExp("(let|const) leader"), "sparta.check = 'yes?'; $&");
       const promoChanged = eval(changedStudentCode + "; leader;");
       expect(promoChanged).toEqual("yes?");
     });
@@ -161,7 +154,7 @@ describe("digits", () => {
   test("should be an array with the correct values", () => {
     return studentCode.then((code) => {
       const digits = eval(code + "; digits;");
-  
+
       expect(digits).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     });
   });
