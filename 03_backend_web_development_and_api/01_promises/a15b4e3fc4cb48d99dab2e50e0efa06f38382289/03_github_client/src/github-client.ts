@@ -47,8 +47,9 @@ export class GithubClient {
     });
   }
 
-  static getRepos() {
+  static getRepos(urlOfRepositories) {
     // You code goes here
+
   }
 
   static printRepos() {

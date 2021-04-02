@@ -87,25 +87,25 @@ function shuffle(arrayToShuffle) {
 }
 
 const playTheMemoryGame = () => {
+  const numberOfCardsCouples = 2;
   console.log("Welcome to the Memory Game!");
-  const shuffledArray = shuffle(createBoard(2));
-  console.log(shuffledArray.map((element, iterator) => iterator + 1 + ":" + element.symbol));
-  console.log("");
-  reader.question("Press [Enter] to start\n", (inputShouldBeEnter) => {
-    process.stdin.on('keypress', (str, key) => {
-      if (key.ctrl && key.name === 'Enter') {
-        process.exit();
-      } else {
-        console.log(`You pressed the "${str}" key`);
-        console.log();
-        console.log(key);
-        console.log();
-      }
-    });
+  const shuffledArray = shuffle(createBoard(numberOfCardsCouples));
+  const shuffledArrayToDisplay = shuffledArray.map((element, iterator) => iterator + 1 + ":" + element.symbol);
+
+  console.log(shuffledArrayToDisplay);
+  const hiddenArray = shuffledArrayToDisplay.map((element, iterator) => iterator + 1 + ":" + "?");
+  const enterCallback = reader.question("Press [Enter] to start\n", (inputShouldBeEnter) => {
+    if (inputShouldBeEnter === "") {
       clear();
+      reader.question(`🖥  clear the screen 🖥\n ${hiddenArray} choose a card \n`, (inputCardNumber) => {
+        hiddenArray[inputCardNumber - 1] = shuffledArrayToDisplay[inputCardNumber - 1];
+        console.log(hiddenArray);
+      });
+    } else {
+      console.log(`You pressed the "${inputShouldBeEnter}" key`);
+      enterCallback();
     }
   });
-  //if (key && key.name == 'enter')
 };
 
 playTheMemoryGame();
