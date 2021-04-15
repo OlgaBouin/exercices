@@ -27,8 +27,9 @@ export class GameModel {
     };
   }
 
-  postGame(bodyToPost: string): void //Promise<Game | null>
-  {
+  postGame(
+    bodyToPost: string,
+  ): void { //Promise<Game | null>
     const gameToInsert = JSON.parse(bodyToPost);
     //const writeResult =
     this.collection.insertOne(gameToInsert);
@@ -80,18 +81,8 @@ export class GameModel {
             }
           }
           return result;
-
-          // return platforms.reduce((accum: boolean, elem: Platform) => {
-          //   if (elem.slug && platformToCheck.slug && elem.slug === platformToCheck.slug) {
-          //     return accum || true;
-          //   } else {
-          //     return accum;
-          //   }
-          // }, false);
         }
         games.forEach((game) => {
-          //const platform = platforms.find(checkIfPlatformIsAlreadyThere)
-          //(platform) => platform.slug === game.platform.slug);
           if (!checkIfPlatformIsAlreadyThere(game.platform)) {
             platforms.push(game.platform);
           }
