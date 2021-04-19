@@ -13,18 +13,11 @@ export function makeApp(gameModel: GameModel): core.Express {
   app.use(bodyParser.json());
 
   app.post("/games", (request, response) => {
-    //const responseFromCreation = gameModel.postGame(JSON.stringify(request.body));
-
-    //s console.log(responseFromCreation);
-    //.then((responseFromPost) => {
-    //  return responseFromPost;
-    //});
-
     if (request.body.name && request.body.slug) {
-      //const responseFromCreation =
-      gameModel.postGame(JSON.stringify(request.body));
-      //response.status(201).json(responseFromCreation);
-      response.status(201).json(request.body);
+      const bodyFromRequest = JSON.stringify(request.body);
+      gameModel.postGame(bodyFromRequest);
+
+      gameModel.findBySlug(request.body.slug).then((result) => response.status(201).json(result));
     } else {
       response.status(400).send("Error occured");
     }
