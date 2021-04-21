@@ -1,0 +1,11 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<h2>Games</h2>
+<ul>
+{% for game in gamesArray %}
+<li>
+{% include "game.njk" %}</li>
+{% endfor %}
+</ul>
+{% endblock %}
