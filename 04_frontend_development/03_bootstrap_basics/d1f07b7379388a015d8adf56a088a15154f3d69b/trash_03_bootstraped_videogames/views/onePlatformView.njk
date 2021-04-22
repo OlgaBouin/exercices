@@ -1,0 +1,14 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <h3>{{data.onePlatform.name}}</h3>
+ <img src="http:{{data.onePlatform.platform_logo_url}}">
+
+
+<ul>
+{% for game in data.gamesOfPlatform %}
+<li>
+{% include "game.njk" %}</li>
+{% endfor %}
+</ul>
+{% endblock %}

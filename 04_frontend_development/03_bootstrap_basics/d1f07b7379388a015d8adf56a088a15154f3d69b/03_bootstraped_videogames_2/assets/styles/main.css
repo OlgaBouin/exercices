@@ -1,0 +1,38 @@
+h6 {
+  color: red;
+}
+
+h1 {
+  text-align: center;
+}
+
+.body {
+  background-color: #05060b !important;
+}
+.mainTextOnHomePage {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: darkorange;
+  font-weight: bold;
+  font-size: 72;
+}
+.secondaryTextOnHomePage {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: antiquewhite;
+  font-size: 56;
+}
+.leftButton {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+.rightButton {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
