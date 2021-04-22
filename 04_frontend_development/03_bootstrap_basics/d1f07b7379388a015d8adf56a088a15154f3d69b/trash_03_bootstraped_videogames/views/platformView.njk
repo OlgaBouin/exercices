@@ -1,0 +1,11 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<h2>Games</h2>
+  {% for pl in platforms %}
+  <h3>{{pl.name}}</h3>
+ <img src="http:{{pl.platform_logo_url}}">
+ <a href="/platforms/{{pl.slug}}/">See more</a>
+  {% endfor %}
+
+  {% endblock %}

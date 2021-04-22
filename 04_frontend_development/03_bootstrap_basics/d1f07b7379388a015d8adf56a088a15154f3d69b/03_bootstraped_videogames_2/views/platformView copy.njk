@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<h1>Platforms</h1>
+<div class="contener">
+<table style="width:100%">
+
+  {% for n in [0,1,2,3] %} 
+  <tr>
+
+<th>
+  <div class="card text-center" style="width: 18rem;">
+    <img src="http:{{platforms[n*3].platform_logo_url}}" class="card-img-center" alt="{{platforms[n*3].name}}">
+    <div class="card-body">
+      <a href="/platforms/{{platforms[n*3].slug}}/" class="btn btn-dark">See more</a>
+    </div>
+  </div> 
+</th>
+<th>
+  <div class="card" style="width: 18rem;">
+    <img src="http:{{platforms[n*3+1].platform_logo_url}}" class="card-img-center" alt="{{platforms[n*3+1].name}}">
+    <div class="card-body">
+      <a href="/platforms/{{platforms[n*3+1].slug}}/" class="btn btn-dark">See more</a>
+    </div>
+  </div> 
+</th>
+<th>
+  <div class="card" style="width: 18rem;">
+    <img src="http:{{platforms[n*3+2].platform_logo_url}}" class="card-img-center" alt="{{platforms[n*3+2].name}}">
+    <div class="card-body">
+      <a href="/platforms/{{platforms[n*3+2].slug}}/" class="btn btn-dark">See more</a>
+    </div>
+  </div> 
+</th>
+  </tr>
+</tr>
+  {% endfor %}</table>
+</div>
+  {% endblock %}

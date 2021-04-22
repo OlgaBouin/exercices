@@ -1,0 +1,15 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<h1>Platforms</h1>
+<div class="card-group">
+  {% for pl in platforms %} 
+  <div class="card text-center" style="width: 18rem;">
+    <img src="http:{{pl.platform_logo_url}}" class="card-img-center" alt="{{pl.name}}">
+    <div class="card-body">
+      <a href="/platforms/{{pl.slug}}/" class="btn btn-dark">See more</a>
+    </div>
+  </div> 
+{% endfor %}
+</div>
+  {% endblock %}
