@@ -1,0 +1,43 @@
+h6 {
+  color: red;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.body {
+  background-color: #05060b;
+}
+.mainTextOnHomePage {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: darkorange;
+  font-weight: bold;
+  font-size: 72;
+}
+.secondaryTextOnHomePage {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: antiquewhite;
+  font-size: 56;
+}
+.leftButton {
+  position: absolute;
+  bottom: -80px;
+  left: 16px;
+}
+.rightButton {
+  position: absolute;
+  bottom: -80px;
+  right: 16px;
+}
+.platformIcon {
+  float: right;
+  width: 50px;
+}

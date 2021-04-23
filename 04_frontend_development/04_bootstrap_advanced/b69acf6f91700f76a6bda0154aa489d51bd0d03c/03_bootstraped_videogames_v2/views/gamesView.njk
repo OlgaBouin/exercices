@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+ <div class="card text-center">
+  <div class="card-header">
+    <h1>Games</h1>
+  </div>
+  <div class="card-body">
+    {% for game in gamesArray %}
+      {% include "game.njk" %}
+      {% endfor %}
+</div>
+<div class="card-footer">
+  <div class="middleButton"><form action="#top"><button type="submit" class="btn btn-dark">Back to top of page</button></form></div>
+</div>
+</div>
+{% endblock %}
