@@ -1,0 +1,22 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+
+
+<div class="card text-center mx-auto mb-3" style="max-width: 740px;">
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+  <div class="card-header">
+  <h1>{{oneGame.name}}</h1>
+ <img src="http:{{oneGame.cover_url}}">
+  </div>
+  <div class="card-body">
+    {{oneGame.summary}}
+    <br>
+
+        <a href="/platforms/{{oneGame.platform.slug}}">
+    <img class="platformIcon" src="http:{{oneGame.platform.platform_logo_url}}">
+</a>
+</div>
+</div>
+  {% endblock %}

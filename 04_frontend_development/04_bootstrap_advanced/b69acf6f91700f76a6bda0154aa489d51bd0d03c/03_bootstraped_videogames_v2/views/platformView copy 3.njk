@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<h1>Platforms</h1>
+<div class="contener">
+  {% for n in [0,1,2] %} 
+  <ul class="list-group list-group-horizontal">
+    {% for k in [0,1,2] %} 
+    <li class="list-group-item">
+  <div class="card text-center" style="width: 18rem;">
+    <img src="http:{{platforms[n*3+k].platform_logo_url}}" class="card-img-center" alt="{{platforms[n*3+k].name}}">
+    <div class="card-body">
+      <a href="/platforms/{{platforms[n*3+k].slug}}/" class="btn btn-dark">See more</a>
+    </div>
+  </div> 
+    </li>
+{% endfor %}
+</ul>
+  {% endfor %}
+  <ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+    <div class="card text-center" style="width: 18rem;">
+      <img src="http:{{platforms[9].platform_logo_url}}" class="card-img-center" alt="{{platforms[9].name}}">
+      <div class="card-body">
+        <a href="/platforms/{{platforms[9].slug}}/" class="btn btn-dark">See more</a>
+      </div>
+    </div>
+    </li>
+  </ul>
+</div>
+  {% endblock %}

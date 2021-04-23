@@ -1,0 +1,12 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <h2>{{oneGame.name}}</h2>
+  <img src="http:{{oneGame.cover_url}}">
+
+<p>available on {{oneGame.platform.name}}</p>
+<p>{{oneGame.summary}}</p>
+
+<h4>Screenshots</h4>
+<p>???</p>
+  {% endblock %}
