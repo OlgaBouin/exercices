@@ -1,0 +1,9 @@
+{% block content %}
+
+<ul>
+{% for gameToDisplay in foundGames %}
+<li>{{gameToDisplay.name}}</li>
+{%endfor%}
+</ul>
+
+ {% endblock %}
