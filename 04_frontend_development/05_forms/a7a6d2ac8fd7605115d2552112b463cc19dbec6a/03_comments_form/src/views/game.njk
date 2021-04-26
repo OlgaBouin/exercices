@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <h1>{{ game.name }}</h1>
+
+  <p>{{ game.summary }}</p>
+
+  <img src="{{ game.cover_url }}"/>
+
+
+  <!-- <form action="/games/{{ game.slug }}" method="POST">
+    <input type="text" name="comment">
+    <button type="submit">Submit</button>
+  </form> -->
+
+  <form action="/games/{{ game.slug }}" method="POST">
+    <label>Your name : </label>
+    <input type="text" name="name">
+    <label>Comment : </label>
+    <textarea name="comment"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if game.comments %}
+  {% for commentFromList in game.comments %}
+<p>{{commentFromList.name}} wrote {{ commentFromList.comment | striptags(true) | escape | nl2br }} </p> 
+{%endfor%}
+{% else %}
+  <p>No comments yet, add your own</p>
+ {% endif %}
+
+  
+
+
+{% endblock %}
