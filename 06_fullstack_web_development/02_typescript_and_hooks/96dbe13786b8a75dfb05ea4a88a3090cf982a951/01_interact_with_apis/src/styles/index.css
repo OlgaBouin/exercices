@@ -1,5 +1,4 @@
 /* Reset default HTML styling */
-
 html,
 body,
 div,
@@ -155,4 +154,10 @@ input {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }
