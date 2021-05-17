@@ -6,6 +6,7 @@ const MyForm = (props: any) => {
   const [enteredTranslation, setEnteredTranslation] = React.useState("");
   const [result, setResult] = React.useState("");
   const [value, setValue] = React.useState("");
+  const [correctQcmResponse, setEnteredRadioButton] = React.useState(false);
 
   const setInputFromUser = (input: any): void => {
     console.log("INPUT--------------------- : ", input);
@@ -25,18 +26,22 @@ const MyForm = (props: any) => {
 
   const checkResultRadio = () => {
     {
-      if (document.getElementById("track") != null) {
-        console.log("DOC-----------------", document.getElementById("track"));
-        // document.getElementById("track").innerHTML = "YES";
-        //=== true ? setResult("OK") : setResult("Oups");
-      }
+      correctQcmResponse ? alert("Correct !") : alert("Try again !");
+
+      console.log("ENTERED RADIO BUTTON-------------------- : ", correctQcmResponse);
+      // if (document.getElementById("track") != null) {
+      //   console.log("DOC-----------------", document.getElementById("track"));
+      // document.getElementById("track").innerHTML = "YES";
+      //=== true ? setResult("OK") : setResult("Oups");
     }
   };
 
   console.log("ENTERED TRANSLATION-------------------- : ", enteredTranslation);
+  console.log("ENTERED RADIO BUTTON-------------------- : ", correctQcmResponse);
   return (
     <div>
       <h1>{result}</h1>
+      <h1>{correctQcmResponse}</h1>
       <div>
         <form>
           <input type="text" value={value} onChange={setInputFromUser} />
@@ -54,13 +59,37 @@ const MyForm = (props: any) => {
       </div>
       <fieldset>
         <legend>Please select one of the following</legend>
-        <input type="radio" name="action" id="track" value="track" />
+        <input
+          type="radio"
+          name="action"
+          id="track"
+          value="track"
+          onChange={(): void => {
+            setEnteredRadioButton(true);
+          }}
+        />
         <label htmlFor="track">{props.translation}</label>
         <br />
-        <input type="radio" name="action" id="event" value="event" />
+        <input
+          type="radio"
+          name="action"
+          id="event"
+          value="event"
+          onChange={(): void => {
+            setEnteredRadioButton(false);
+          }}
+        />
         <label htmlFor="event">livre</label>
         <br />
-        <input type="radio" name="action" id="message" value="message" />
+        <input
+          type="radio"
+          name="action"
+          id="message"
+          value="message"
+          onChange={(): void => {
+            setEnteredRadioButton(false);
+          }}
+        />
         <label htmlFor="message">message</label>
         <br />
       </fieldset>
