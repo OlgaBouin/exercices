@@ -45,41 +45,36 @@ const filterCountriesByAnimalsNames = (coutriesArray) => {
   );
 };
 
-const addCountToNameField = (elementToAddCountOnName, arrayName) => {
-  return {
-    name:
-      elementToAddCountOnName.name +
-      "[" +
-      elementToAddCountOnName[arrayName].length +
-      "]",
-    arrayName: elementToAddCountOnName[arrayName],
-  };
+const addCountToNameField = (arrayOfElements) => {
+  const subArrayName = Object.keys(arrayOfElements[0])[1];
+  if (subArrayName === undefined) return arrayOfElements;
+  console.log("**************", subArrayName);
+  return arrayOfElements.map((element) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%", element);
+    element[`name`] = element.name + `[` + element[subArrayName].length + `]`;
+    element[subArrayName] = addCountToNameField(element[subArrayName]);
+    return element;
+  });
+  // );
+  //);
 };
 
-const countNumberOfChildren = (arrayOfCountries) => {
-  return JSON.stringify(
-    arrayOfCountries.map((country) => {
-      return {
-        name: country.name + "[" + country.people.length + "]",
-        people: country.people.map((person) =>
-          addCountToNameField(person, "animals")
-        ),
-      };
-    }),
-    null,
-    1
+if (parametersFromCommandLine[0]) {
+  switch (parametersFromCommandLine[0].split("=")[0]) {
+    case "--filter":
+      console.log(filterCountriesByAnimalsNames(data.data));
+      break;
+    case "--count":
+      console.log(addCountToNameField(data.data));
+      // console.table(addCountToNameField(data.data));
+      // console.dir(addCountToNameField(data.data));
+      break;
+    default:
+      console.log(
+        "Please run the command as follows : node app.js --filter=<your_filter> or node app.js --count"
+      );
+  }
+} else
+  console.log(
+    "Please run the command as follows : node app.js --filter=<your_filter> or node app.js --count"
   );
-};
-
-switch (parametersFromCommandLine[0].split("=")[0]) {
-  case "--filter":
-    console.log(filterCountriesByAnimalsNames(data.data));
-    break;
-  case "--count":
-    console.log(countNumberOfChildren(data.data));
-    break;
-  default:
-    console.log(
-      "Please run the command as follows : node app.js --filter=<your_filter> or node app.js --count"
-    );
-}
